@@ -1,0 +1,12 @@
+[Plymouth Theme]
+Name=BigLinux Text
+Description=Text mode theme based on biglinux-logo theme
+ModuleName=biglinux-text
+
+[biglinux-text]
+title=BigLinux
+black=0x000000
+white=0xffffff
+brown=0x84BD55
+blue=0x9D9FA0
+

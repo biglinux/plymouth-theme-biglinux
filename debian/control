@@ -1,0 +1,22 @@
+Source: plymouth-theme-biglinux
+Section: admin
+Priority: optional
+Maintainer: Tales Mendonça <talesam@gmail.com>
+Build-Depends: debhelper (>= 8)
+Standards-Version: 3.9.2
+
+Package: plymouth-theme-biglinux-logo
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, plymouth, plymouth-label
+Provides: plymouth-theme
+Replaces: plymouth (<< 0.8.1-1~)
+Description: Plymouth theme for Linux Deepin
+ This theme package contains deepin-logo.
+
+Package: plymouth-theme-biglinux-text
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, plymouth
+Provides: plymouth-theme
+Replaces: plymouth (<< 0.8.1-1~)
+Description: Plymouth theme for Linux Deepin
+ This theme package contains deepin-text.
