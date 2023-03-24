@@ -8,7 +8,7 @@ post_install() {
 
 # add plymouth to mkinitcpio
 if [ -z "$(grep plymouth /etc/mkinitcpio.conf)" ];then
-    sed -i 's/"/"plymouth /' /etc/mkinitcpio.conf
+    sed -i '/HOOKS=/s/"/"plymouth /' /etc/mkinitcpio.conf
 fi
 
 # change plymouth theme
