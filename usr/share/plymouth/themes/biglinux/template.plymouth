@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name={{ThemeName}}
+Description={{Description}}
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/{{ThemeName}}/animation
+ScriptFile=/usr/share/plymouth/themes/{{ThemeName}}/animated-boot.script
