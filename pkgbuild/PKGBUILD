@@ -1,6 +1,6 @@
 # Maintainer: Barnabé di Kartola <barnabedikartola@gmail.com>
 
-pkgname=plymouth-theme-biglinux-2023
+pkgname=plymouth-theme-biglinux
 pkgver=$(date +%y.%m.%d)
 pkgrel=$(date +%H%M)
 pkgdesc="Plymouth theme for BigLinux"
