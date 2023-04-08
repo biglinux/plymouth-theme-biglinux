@@ -13,9 +13,12 @@ if [ -z "$(grep plymouth /etc/mkinitcpio.conf)" ];then
 fi
 
 # change plymouth theme
-if [ -z "$(grep biglinux /etc/plymouth/plymouthd.conf)" ];then
+#if [ -z "$(grep biglinux /etc/plymouth/plymouthd.conf)" ];then
     plymouth-set-default-theme -R biglinux
-fi
+#fi
+
+# Enable systemd log
+systemctl enable plymouth-show-log.service
 
 }
 
