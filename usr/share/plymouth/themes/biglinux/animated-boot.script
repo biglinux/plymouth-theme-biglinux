@@ -1,27 +1,59 @@
-# Nice colour on top of the screen fading to
+# Background colors configuration
 Window.SetBackgroundTopColor (0.1176, 0.1176, 0.1176);
-
-# an equally nice colour on the bottom
 Window.SetBackgroundBottomColor (0.1176, 0.1176, 0.1176);
 
-# Image animation loop
-for (i = 1; i < 27; i++)
-  flyingman_image[i] = Image("progress-" + i + ".png");
-flyingman_sprite = Sprite();
+# Loading images for both animations
+# First animation (no loop)
+for (i = 1; i < 121; i++) {
+    intro_animation[i] = Image("progress-" + i + ".png");
+}
 
-#Place in the center
-flyingman_sprite.SetX(Window.GetWidth() / 2 - flyingman_image[1].GetWidth() / 2); 
-flyingman_sprite.SetY(Window.GetHeight() / 2 - flyingman_image[1].GetHeight() / 2);
+# Second animation (with loop)
+loop_frames = 65; # Total frames for loop animation
+for (i = 1; i <= loop_frames; i++) {
+    loop_animation[i] = Image("loop-progress-" + i + ".png");
+}
+
+animation_sprite = Sprite();
+
+# Set up and display sprite immediately
+animation_sprite.SetOpacity(1);
+
+# Center the animation on screen
+animation_sprite.SetX(Window.GetWidth() / 2 - intro_animation[1].GetWidth() / 2);
+animation_sprite.SetY(Window.GetHeight() / 2 - intro_animation[1].GetHeight() / 2);
 
 progress = 1;
+intro_finished = 0;  # Flag to control when first animation is done
 
-fun refresh_callback ()
-  {
-    flyingman_sprite.SetImage(flyingman_image[Math.Int(progress / 6) % 27]);
-    progress++;
-  }
-  
-Plymouth.SetRefreshFunction (refresh_callback);
+fun refresh_callback() {
+    if (intro_finished == 0) {
+        # First animation - runs once
+        current_frame = Math.Int(progress / 1.7);  # Original timing for first animation
+        if (current_frame < 120) {
+            animation_sprite.SetImage(intro_animation[current_frame + 1]);
+            progress++;
+        } else {
+            intro_finished = 1;
+            progress = 1;  # Reset progress for second animation
+        }
+    } else {
+        # Second animation - loops
+        # Using same frame timing as first animation
+        current_frame = Math.Int(progress / 1.7) % loop_frames;
+        animation_sprite.SetImage(loop_animation[current_frame + 1]);
+        progress++;
+    }
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);
+
+# Smooth exit
+fun quit_callback() {
+    animation_sprite.SetOpacity(0);
+}
+
+Plymouth.SetQuitFunction(quit_callback);
 
 
 #----------------------------------------- Dialogue --------------------------------

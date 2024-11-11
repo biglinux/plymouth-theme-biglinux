@@ -1,8 +1,8 @@
 [Plymouth Theme]
-Name=biglinux
-Description=loading biglinux animation
+Name=bignew
+Description=loading Big animation
 ModuleName=script
 
 [script]
-ImageDir=/usr/share/plymouth/themes/biglinux
+ImageDir=/usr/share/plymouth/themes/biglinux/animation
 ScriptFile=/usr/share/plymouth/themes/biglinux/animated-boot.script
